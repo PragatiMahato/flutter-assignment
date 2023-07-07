@@ -1,11 +1,11 @@
+// ignore_for_file: library_private_types_in_public_api, non_constant_identifier_names, avoid_types_as_parameter_names
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:onlinestore/models/product_models.dart';
 import 'package:onlinestore/screens/detailedpage.dart';
 import 'package:onlinestore/screens/searchPage.dart';
-
-import '../widgets/searchbar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

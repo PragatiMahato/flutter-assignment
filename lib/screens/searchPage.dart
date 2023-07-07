@@ -1,6 +1,6 @@
-import 'dart:convert';
+// ignore_for_file: library_private_types_in_public_api, file_names
+
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:onlinestore/models/product_models.dart';
 import 'package:onlinestore/screens/detailedpage.dart';
 
@@ -35,7 +35,7 @@ class _SearchPageState extends State<SearchPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0XFF5C519A),
+        backgroundColor: const Color(0XFF5C519A),
         title: TextField(
           onChanged: filterResults,
           decoration: const InputDecoration(
@@ -59,7 +59,7 @@ class _SearchPageState extends State<SearchPage> {
                     }),
                   );
                 },
-                leading: Container(
+                leading: SizedBox(
                   height: 180,
                   width: 100,
                   child: Image.network(
@@ -69,11 +69,11 @@ class _SearchPageState extends State<SearchPage> {
                 ),
                 title: Text(
                   product.title,
-                  style: TextStyle(fontSize: 15),
+                  style: const TextStyle(fontSize: 15),
                 ),
                 trailing: Text(
                   '\$${product.price.toString()}',
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Color(0XFF5C519A),
                   ),
                 ),
