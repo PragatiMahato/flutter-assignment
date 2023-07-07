@@ -23,10 +23,12 @@ The Search Page provides a search interface for users to find products based on 
 Include screenshots of the following screens:
 
 1. Products Page: A screenshot of the main screen displaying the list of products.
-
 ![HomePage](homepage_screenshot.png)
 
 2. Detailed Page: A screenshot of the detailed view of a product.
+![DetailPage](detailpage.png)
+
 3. Search Page: A screenshot of the search interface with search results.
+![SearchPage](searchpage_screenshot.png)
 
 By including these screenshots and the description of the application's functionality, you can provide a comprehensive overview of the Online Store Application in your DOCS.md file.
