@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
             title: Column(
               children: const [
                 Text(
-                  "Our Products",
+                  " OnlineStore",
                   style: TextStyle(fontSize: 23),
                 ),
               ],
