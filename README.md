@@ -31,4 +31,3 @@ Include screenshots of the following screens:
 3. Search Page: A screenshot of the search interface with search results.
 ![SearchPage](searchpage_screenshot.png)
 
-By including these screenshots and the description of the application's functionality, you can provide a comprehensive overview of the Online Store Application in your DOCS.md file.
