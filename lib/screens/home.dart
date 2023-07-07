@@ -2,22 +2,20 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:onlinestore/models/product_models.dart';
+import 'package:onlinestore/screens/detailedpage.dart';
+import 'package:onlinestore/screens/searchPage.dart';
 
 import '../widgets/searchbar.dart';
-import 'detailedpage.dart';
 
-class ProductsPage extends StatefulWidget {
-  const ProductsPage({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  _ProductsPageState createState() => _ProductsPageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _ProductsPageState extends State<ProductsPage> {
+class _HomePageState extends State<HomePage> {
   List<ProductModel> products = [];
-  List<ProductModel> filteredProducts = [];
-  final TextEditingController _searchController = TextEditingController();
-  Map<String, List<ProductModel>> productsByCategory = {};
 
   @override
   void initState() {
@@ -35,25 +33,13 @@ class _ProductsPageState extends State<ProductsPage> {
         products = List.from(jsonData)
             .map((data) => ProductModel.fromJson(data))
             .toList();
-        filteredProducts = List.from(products);
-        productsByCategory = _groupProductsByCategory(products);
       });
     }
-
-    _searchController.addListener(() {
-      String searchQuery = _searchController.text.toLowerCase();
-      setState(() {
-        filteredProducts = products
-            .where(
-                (product) => product.title.toLowerCase().contains(searchQuery))
-            .toList();
-        productsByCategory = _groupProductsByCategory(filteredProducts);
-      });
-    });
   }
 
   Map<String, List<ProductModel>> _groupProductsByCategory(
-      List<ProductModel> products) {
+    List<ProductModel> products,
+  ) {
     Map<String, List<ProductModel>> groupedProducts = {};
 
     for (var product in products) {
@@ -67,14 +53,10 @@ class _ProductsPageState extends State<ProductsPage> {
   }
 
   @override
-  void dispose() {
-    _searchController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    Map<String, List<ProductModel>> productsByCategory =
+        _groupProductsByCategory(products);
 
     return Scaffold(
       body: CustomScrollView(
@@ -82,7 +64,13 @@ class _ProductsPageState extends State<ProductsPage> {
           SliverAppBar(
             backgroundColor: const Color(0XFF5C519A),
             leading: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) {
+                    return SearchPage(products: products);
+                  }),
+                );
+              },
               icon: const Icon(Icons.more_vert),
             ),
             title: Column(
@@ -141,7 +129,26 @@ class _ProductsPageState extends State<ProductsPage> {
                               ),
                             ],
                           ),
-                          child: SearchBox(controller: _searchController),
+                          child: TextField(
+                            decoration: const InputDecoration(
+                              hintText: "What are you looking for?",
+                              hintStyle: TextStyle(color: Color(0XFF5C519A)),
+                              prefixIcon: Icon(
+                                Icons.search,
+                                color: Color(0XFF5C519A),
+                                size: 33,
+                              ),
+                              enabledBorder: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                            ),
+                            onSubmitted: (String) {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context) {
+                                  return SearchPage(products: products);
+                                }),
+                              );
+                            },
+                          ),
                         ),
                       ),
                     ],
@@ -151,7 +158,7 @@ class _ProductsPageState extends State<ProductsPage> {
             ),
           ),
           SliverPadding(
-            padding: const EdgeInsets.only(top: 5, left: 9, right: 7),
+            padding: const EdgeInsets.all(8.0),
             sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
@@ -165,9 +172,12 @@ class _ProductsPageState extends State<ProductsPage> {
                         height: 45,
                         width: 180,
                         decoration: BoxDecoration(
-                            border:
-                                Border.all(color: const Color(0XFF5C519A), width: 2),
-                            borderRadius: BorderRadius.circular(17)),
+                          border: Border.all(
+                            color: const Color(0XFF5C519A),
+                            width: 2,
+                          ),
+                          borderRadius: BorderRadius.circular(17),
+                        ),
                         child: Padding(
                           padding: const EdgeInsets.all(8),
                           child: Text(
@@ -209,8 +219,9 @@ class _ProductsPageState extends State<ProductsPage> {
                                       height: 15,
                                     ),
                                     SizedBox(
-                                        height: 70,
-                                        child: Image.network(product.image)),
+                                      height: 70,
+                                      child: Image.network(product.image),
+                                    ),
                                     const SizedBox(height: 10),
                                     Text(
                                       product.title,
@@ -222,11 +233,15 @@ class _ProductsPageState extends State<ProductsPage> {
                                       ),
                                     ),
                                     const SizedBox(height: 4),
-                                    Text(
-                                      '\$${product.price.toString()}',
-                                      style: const TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 8.0, bottom: 8.0),
+                                      child: Text(
+                                        '\$${product.price.toString()}',
+                                        style: const TextStyle(
+                                          color: Colors.green,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ),
                                     const SizedBox(
