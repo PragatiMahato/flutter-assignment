@@ -1,7 +1,7 @@
 class ProductModel {
   int id;
   String title;
-  double price; 
+  double price;
   String category;
   String description;
   String image;
@@ -20,7 +20,7 @@ class ProductModel {
         title: json['title'],
         category: json['category'],
         description: json['description'],
-        price: json['price'].toDouble(), 
+        price: json['price'].toDouble(),
         image: json['image'],
       );
 }
