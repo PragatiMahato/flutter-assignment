@@ -1,7 +1,8 @@
 # Online Store Application
+
 The Online Store Application is a mobile app developed using Flutter. It allows users to browse and search for products from an online store. The app retrieves product data from an API and displays it in various screens.
 
-## Different  Pages
+## Different Pages
 
 ### Home Page
 
@@ -23,7 +24,8 @@ Include screenshots of the following screens:
 
 1. Products Page: A screenshot of the main screen displaying the list of products.
 
-![HomePage](Screenshot 2023-07-08 at 12.13.33 AM.png)
+![HomePage](homepage_screenshot.png)
+
 2. Detailed Page: A screenshot of the detailed view of a product.
 3. Search Page: A screenshot of the search interface with search results.
 
