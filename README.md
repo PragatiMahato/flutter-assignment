@@ -26,7 +26,7 @@ Include screenshots of the following screens:
 ![HomePage](homepage_screenshot.png)
 
 2. Detailed Page: A screenshot of the detailed view of a product.
-![DetailPage](detailpage.png)
+![DetailPage](detailpage_screenshot.png)
 
 3. Search Page: A screenshot of the search interface with search results.
 ![SearchPage](searchpage_screenshot.png)
