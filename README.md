@@ -23,7 +23,7 @@ Include screenshots of the following screens:
 
 1. Products Page: A screenshot of the main screen displaying the list of products.
 
-![CHEESE!](Screenshot 2023-07-08 at 12.13.33 AM.png)
+![HomePage](Screenshot 2023-07-08 at 12.13.33 AM.png)
 2. Detailed Page: A screenshot of the detailed view of a product.
 3. Search Page: A screenshot of the search interface with search results.
 
